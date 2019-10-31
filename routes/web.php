@@ -15,9 +15,9 @@ use App\Category;
 */
 
 Route::get('/', function () {
-    $product = Product::all();
+    $product = Product::all()->take(6);
     $categories = Category::all();
-    $recommended = $product->where('rating', '>', 3);
+    $recommended = Product::all()->where('rate', '>', 3)->take(6);
     return view('pages/welcome', compact("product", "categories", "recommended"));
 });
 
@@ -28,14 +28,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('products', 'ProductsController');
 
-Route::get('/categories', function () {
+Route::get('/categorie/{categorie?}', function ($categorie = 'DEPORTES') {
     $categories = Category::all();
+    $items = Product::all()->where('section', $categorie);
 
-    return view('pages/categories', compact("categories"));
+    return view('pages/categories', compact("categories", "items"));
+})->name('categorie');
+
+
+Route::get('/product/{item_code}', 'ProductsController@show')->name('product');
+
+Route::get('/cart', 'OrdersController@show')->name('order');
+
+Route::get('/purchased', function () {
+    return view('pages/purchased');
 });
 
-Route::get('/product', function () {
-    $categories = Category::all();
-
-    return view('pages/product', compact("categories"));
-});
+Route::post('/order/{item_code}', 'OrdersController@insert')->name('order');

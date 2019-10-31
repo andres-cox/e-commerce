@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Product;
+use App\Order;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -38,6 +42,13 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         //
+        $order = new Order;
+        $order->name = Auth::user()->name;
+        $order->item_code = $request->item_code;
+        $order->save();
+        $categories = Category::all();
+        $product = Product::all()->where('item_code', $request->item_code);
+        return view('pages/addToCart', compact("categories", "product"));
     }
 
     /**
@@ -46,9 +57,17 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($item_code)
     {
         //
+        $categories = Category::all();
+        $product = Product::all()->where('item_code', $item_code);
+        // if (Auth::check()) {
+        //     echo Auth::user()->name;
+        // } else {
+        //     echo "you are not logged";
+        // }
+        return view('pages/product', compact("categories", "product"));
     }
 
     /**
@@ -72,6 +91,7 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**

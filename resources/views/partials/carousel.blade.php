@@ -6,25 +6,30 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="http://placehold.it/1000x250" alt="..." height="250px" width="100%">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Title</h5>
-                <p>Description</p>
-            </div>
+            <a href="{{route('categorie', ['categorie' => 'FERRETERÍA'])}}">
+                <img src="http://placehold.it/1000x200" alt="..." height="250px" width="100%">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>FERRETERIA</h5>
+                </div>
+            </a>
         </div>
+
         <div class="carousel-item">
-            <img src="http://placehold.it/1000x250" alt="..." height="250px" width="100%">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Title</h5>
-                <p>Description</p>
-            </div>
+            <a href="{{route('categorie', ['categorie' => 'DEPORTES'])}}">
+                <img src="http://placehold.it/1000x200" alt="..." height="250px" width="100%">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>DEPORTES</h5>
+                </div>
+            </a>
         </div>
+
         <div class="carousel-item">
-            <img src="http://placehold.it/1000x250" alt="..." height="250px" width="100%">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Title</h5>
-                <p>Description</p>
-            </div>
+            <a href="{{route('categorie', ['categorie' => 'JUGUETERÍA'])}}">
+                <img src="http://placehold.it/1000x200" alt="..." height="250px" width="100%">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>JUGUETERIA</h5>
+                </div>
+            </a>
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
