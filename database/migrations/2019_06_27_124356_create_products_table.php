@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('section');
             $table->string('item_name');
             $table->text('description');
-            $table->integer('price');
+            $table->float('price');
             $table->string('date');
             $table->string('imported');
             $table->string('country');
